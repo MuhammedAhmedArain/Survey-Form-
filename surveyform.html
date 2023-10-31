@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px #ccc;
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            margin-top: 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Style for the modal */
+        #modal-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        #modal {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px #ccc;
+        }
+    </style>
+    <title>Survey Form</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Survey Form</h1>
+        <form id="survey-form" onsubmit="showConfirmation(event)">
+            <label for="first-name">First Name:</label>
+            <input type="text" id="first-name" name="first-name" required>
+
+            <label for="last-name">Last Name:</label>
+            <input type="text" id="last-name" name="last-name" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="education-level">Highest Education Level:</label>
+            <select id="education-level" name="education-level">
+                <option value="High School">High School</option>
+                <option value="Bachelor's Degree">Bachelor's Degree</option>
+                <option value="Master's Degree">Master's Degree</option>
+                <option value="Ph.D.">Ph.D.</option>
+            </select>
+
+            <label for="business-experience">Years of Business Experience:</label>
+            <input type="number" id="business-experience" name="business-experience" required>
+
+            <label for="skills">Skills or Certifications:</label>
+            <textarea id="skills" name="skills" rows="4"></textarea>
+
+            <label for="custom-question">Custom Question:</label>
+            <textarea id="custom-question" name="custom-question" rows="4"></textarea>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <!-- Modal dialog for confirmation message -->
+    <div id="modal-container">
+        <div id="modal">
+            <h2>Your response has been recorded.</h2>
+        </div>
+    </div>
+
+    <script>
+        function showConfirmation(event) {
+            event.preventDefault();
+            const form = document.getElementById("survey-form");
+            form.style.display = "none";
+
+            // Show the modal container with the confirmation message
+            const modalContainer = document.getElementById("modal-container");
+            modalContainer.style.display = "flex";
+        }
+    </script>
+</body>
+</html>
